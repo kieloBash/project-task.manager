@@ -1,8 +1,6 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="">
+    <main className="w-screen min-h-[calc(100vh-5rem)] flex justify-center items-center">
       <div className="">Home</div>
     </main>
   );

@@ -3,9 +3,9 @@ import React from "react";
 
 const SignInPage = () => {
   return (
-    <>
+    <div className="flex items-center justify-center w-full min-h-[calc(100vh-5rem)]">
       <SignIn />
-    </>
+    </div>
   );
 };
 

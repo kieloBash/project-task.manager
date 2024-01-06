@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Header from "@/components/global/header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,9 +20,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${inter.className} flex min-h-screen flex-col items-center justify-center`}
+          className={`${inter.className} flex min-h-screen w-screen items-start justify-center relative`}
         >
-          {children}
+          <Header />
+          <section className="w-full h-full pt-20 from-blue-50 to-cyan-50 bg-gradient-to-r">
+            {children}
+          </section>
         </body>
       </html>
     </ClerkProvider>
