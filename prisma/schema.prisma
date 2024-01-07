@@ -11,5 +11,42 @@ model User {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   name    String
   clerkId String
+  image   String
   email   String @unique
+
+  projectIDs String[]  @db.ObjectId
+  projects   Project[] @relation(fields: [projectIDs], references: [id])
+
+  tasksIDs String[] @db.ObjectId
+  tasks    Task[]   @relation(fields: [tasksIDs], references: [id])
+}
+
+model Project {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+
+  membersIDs String[] @db.ObjectId
+  members    User[]   @relation(fields: [membersIDs], references: [id])
+
+  tasks Task[]
+}
+
+enum TaskStatus {
+  DONE
+  PENDING
+}
+
+model Task {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  status      TaskStatus
+  created     DateTime
+  deadline    DateTime
+
+  projectId String  @db.ObjectId
+  project   Project @relation(fields: [projectId], references: [id])
+
+  assignedToIDs String[] @db.ObjectId
+  assignedTo    User[]   @relation(fields: [assignedToIDs], references: [id])
 }

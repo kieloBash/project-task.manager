@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Header from "@/components/global/header";
 
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,12 +20,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${inter.className} flex min-h-screen w-screen items-start justify-center relative`}
+          className={`${inter.className} flex h-screen w-screen items-start justify-center relative`}
         >
-          <Header />
-          <section className="w-full h-full pt-20 from-blue-50 to-cyan-50 bg-gradient-to-r">
+          <section className="w-full h-full from-blue-50 to-cyan-50 bg-gradient-to-r">
             {children}
           </section>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
